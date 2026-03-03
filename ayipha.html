@@ -73,13 +73,14 @@
             z-index: 0;
         }
 
-        /* Stiker di background (subtle) */
+        /* Stiker di background (subtle + float) */
+        @keyframes floaty { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(6deg);} 100% { transform: translateY(0) rotate(0deg);} }
         .sticker-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .sticker { position: absolute; font-size: 2.5rem; opacity: 0.12; transform: rotate(10deg); }
-        .sticker1 { top: 5%; right: 5%; transform: rotate(15deg); }
-        .sticker2 { bottom: 10%; left: 3%; transform: rotate(-10deg); }
-        .sticker3 { top: 30%; left: 10%; transform: rotate(25deg); }
-        .sticker4 { bottom: 20%; right: 8%; transform: rotate(-5deg); }
+        .sticker { position: absolute; font-size: 2.6rem; opacity: 0.14; transform: rotate(10deg); filter: drop-shadow(0 4px 0 rgba(0,0,0,0.03)); animation: floaty 6s ease-in-out infinite; }
+        .sticker1 { top: 5%; right: 5%; transform: rotate(15deg); animation-delay: 0s; }
+        .sticker2 { bottom: 10%; left: 3%; transform: rotate(-10deg); animation-delay: 1.2s; }
+        .sticker3 { top: 30%; left: 10%; transform: rotate(25deg); animation-delay: 0.6s; }
+        .sticker4 { bottom: 20%; right: 8%; transform: rotate(-5deg); animation-delay: 1s; }
 
         /* Konten utama di atas sticker */
         .cv-content { position: relative; z-index: 20; }
@@ -126,14 +127,14 @@
         /* Foto profil */
         .photo-cute {
             width: 180px; height: 180px; margin: 0 auto 1.5rem;
-            border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
-            background: var(--accent);
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 20%, #fff4f6 0%, #ffd6e0 30%, var(--accent) 100%);
             border: 8px solid var(--white);
             box-shadow: 0 15px 0 var(--shadow);
-            overflow: hidden; transition: 0.3s;
+            overflow: hidden; transition: none;
         }
 
-        .photo-cute img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-cute img, .photo-cute svg { width: 100%; height: 100%; object-fit: cover; display:block; }
 
         /* Info pribadi */
         .info-item {
@@ -152,25 +153,29 @@
         /* Section title */
         .section-cute { font-size: 1.6rem; font-weight: 700; color: var(--text); margin: 1.8rem 0 1rem 0; font-family: 'Fredoka', sans-serif; display:flex; align-items:center; gap:0.8rem; }
 
-        .section-cute span { background: var(--accent-2); padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.9rem; color: var(--muted); border: 2px solid var(--white); }
+        .section-cute span { background: var(--accent-2); padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.9rem; color: var(--muted); border: 2px solid var(--white); position:relative; }
+        @keyframes twinkle { 0% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); opacity: 0.9; } }
+        .section-cute span { animation: twinkle 3.8s ease-in-out infinite; }
 
         /* About me box (neutral) */
         .about-cute { background: var(--cream); padding: 1.5rem; border-radius: 40px; border: 3px solid var(--white); box-shadow: 0 8px 0 var(--shadow); color: var(--muted); }
 
         /* Skill chips */
         .skill-container { display:flex; flex-wrap:wrap; gap:0.6rem; margin:1rem 0; }
-        .skill-cute { background: var(--accent); padding: 0.5rem 1.3rem; border-radius: 60px; font-weight:600; color: var(--text); border: 3px solid var(--white); box-shadow: 0 4px 0 var(--shadow); font-size:0.9rem; transition:0.2s; }
-        .skill-cute:hover { transform: rotate(2deg) scale(1.05); background: var(--accent-2); }
+        .skill-cute { background: linear-gradient(90deg,#fffaf3,#fff6f8); padding: 0.45rem 1.1rem; border-radius: 999px; font-weight:700; color: var(--text); border: 2px solid #fff; box-shadow: 0 6px 0 rgba(0,0,0,0.04); font-size:0.95rem; transition: transform .18s ease, box-shadow .18s ease; }
+        .skill-cute:hover { transform: translateY(-6px) scale(1.05); box-shadow: 0 10px 0 rgba(0,0,0,0.06); }
 
+        @keyframes slideInUp { 0% { transform: translateY(10px); opacity:0; } 100% { transform: translateY(0); opacity:1; } }
         /* Education card */
-        .edu-cute { background: var(--cream); border-radius:40px; padding:1.2rem 1.8rem; margin-bottom:1rem; border:3px solid var(--white); box-shadow:0 8px 0 var(--shadow); display:flex; flex-wrap:wrap; align-items:baseline; gap:0.8rem; }
+        .edu-cute { background: var(--cream); border-radius:14px; padding:1rem 1.4rem; margin-bottom:1rem; border:2px solid var(--white); box-shadow:0 8px 0 var(--shadow); display:flex; flex-wrap:wrap; align-items:baseline; gap:0.8rem; animation: slideInUp .45s ease both; }
         .edu-year { background: var(--white); padding:0.2rem 1.2rem; border-radius:60px; font-weight:700; color:var(--text); border:2px solid var(--accent-2); }
         .edu-desc { font-weight:600; color:var(--text); }
         .edu-desc small { font-weight:400; color:var(--muted); margin-left:0.3rem; }
 
         /* Experience card */
-        .exp-cute { background: var(--cream); border-radius:40px; padding:1.5rem; margin-bottom:1.2rem; border:3px solid var(--white); box-shadow:0 8px 0 var(--shadow); position:relative; }
-        .exp-cute::before { content: "✧"; position:absolute; top:-5px; right:15px; font-size:2rem; color:var(--accent); opacity:0.35; }
+        .exp-cute { background: var(--cream); border-radius:18px; padding:1.2rem; margin-bottom:1rem; border:2px solid var(--white); box-shadow:0 8px 0 var(--shadow); position:relative; transition: transform .18s ease; }
+        .exp-cute:hover { transform: translateY(-6px); }
+        .exp-cute::before { content: "✧"; position:absolute; top:-8px; right:12px; font-size:1.6rem; color:var(--accent); opacity:0.7; }
         .exp-header { display:flex; flex-wrap:wrap; align-items:baseline; gap:0.8rem 1.2rem; margin-bottom:0.5rem; }
         .exp-year { background: var(--white); padding:0.2rem 1.2rem; border-radius:60px; font-weight:700; color:var(--text); border:2px solid var(--accent-2); }
         .exp-place { font-weight:700; color:var(--text); font-size:1.2rem; }
@@ -206,7 +211,7 @@
             <!-- Header dengan nama -->
             <div class="header-cute">
                 <div class="name-cute">Alifah Lauthfiyah Nurwasilah</div>
-                <div class="title-cute">ILMU KOMPUTER</div>
+                <div class="title-cute">ILMU KOMPUTER - F1G124002</div>
             </div>
 
             <!-- Grid konten -->
@@ -215,8 +220,22 @@
                 <div class="left-cute">
                     <!-- Foto profil -->
                     <div class="photo-cute">
-                        <!-- Ganti dengan foto asli nanti -->
-                        <img src="https://via.placeholder.com/300x300/fddde6/a55363?text=F" alt="February">
+                            <!-- Neutral inline avatar (no external file needed) -->
+                            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
+                                <defs>
+                                    <linearGradient id="g1" x1="0" x2="1">
+                                        <stop offset="0" stop-color="#f5efe6"/>
+                                        <stop offset="1" stop-color="#efe1cd"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect width="120" height="120" rx="20" fill="url(#g1)" />
+                                <g transform="translate(12,12)" fill="#5b4636">
+                                    <circle cx="48" cy="30" r="20" fill="#fff" />
+                                    <circle cx="48" cy="30" r="18" fill="#fddde6" />
+                                    <path d="M8 86c0-16 20-28 40-28s40 12 40 28v6H8v-6z" fill="#fff" />
+                                    <path d="M20 86c0-10 14-18 28-18s28 8 28 18v2H20v-2z" fill="#f5efe6" />
+                                </g>
+                            </svg>
                     </div>
 
                     <!-- Info pribadi -->
@@ -250,7 +269,7 @@
                 <div class="right-cute">
                     <!-- About Me -->
                     <div class="section-cute">
-                        ✦ About Me <span>imut</span>
+                        ✦ About Me </span>
                     </div>
                     <div class="about-cute">
                         Saya adalah mahasiswi Ilmu Komputer di Universitas Halu Oleo yang tertarik dengan dunia teknologi. Saya memilih jurusan ini karena melihat prospek masa depannya yang sangat cerah di era digital seperti sekarang, hampir semua bidang membutuhkan lulusan Ilkom, mulai dari perusahaan hingga instansi pemerintah. Fleksibilitas karir ini membuat saya yakin bahwa ilmu yang saya pelajari akan relevan dan berguna untuk jangka panjang.
@@ -258,7 +277,7 @@
 
                     <!-- Software & Skills -->
                     <div class="section-cute">
-                        ✦ Software & Skills <span>✨</span>
+                        ✦ Software & Skills </span>
                     </div>
                     <div class="skill-container">
                         <span class="skill-cute">Visual Studio Code</span>
@@ -270,7 +289,7 @@
 
                     <!-- Education -->
                     <div class="section-cute">
-                        ✦ Education <span>📚</span>
+                        ✦ Education </span>
                     </div>
                     <div class="edu-cute">
                         <span class="edu-year">2012 - 2018</span>
@@ -292,7 +311,7 @@
 
                     <!-- Hobi -->
                     <div class="section-cute">
-                        ✦ Hobi <span>🎯</span>
+                        ✦ Hobi </span>
                     </div>
                     <div class="skill-container hobby-list">
                         <span class="skill-cute">Bermain Game</span>
@@ -303,57 +322,41 @@
 
                     <!-- Experience -->
                     <div class="section-cute">
-                        ✦ Experience <span>💼</span>
+                        ✦ Experience </span>
                     </div>
 
                     <div class="exp-cute">
                         <div class="exp-header">
-                            <span class="exp-year">2018</span>
-                            <span class="exp-place">Dompet Dhuaa</span>
+                            <span class="exp-year">2015 - 2018</span>
+                            
                         </div>
-                        <div class="exp-role">Graphic Design</div>
-                        <div class="exp-desc">Februari - April · Mendesain konten untuk media sosial dan materi kampanye</div>
+                    
+                        <div class="exp-desc">Marching Band, Anggota Panduan Suara</div>
                     </div>
 
                     <div class="exp-cute">
                         <div class="exp-header">
-                            <span class="exp-year">2019</span>
-                            <span class="exp-place">Ferio Printing</span>
+                            <span class="exp-year">2020 - 2021</span>
+                            
                         </div>
-                        <div class="exp-role">Layout, Settings</div>
-                        <div class="exp-desc">Mei - Agustus · Mengerjakan layout dan setting pre-print untuk berbagai produk</div>
+                        
+                        <div class="exp-desc">Anggota Palang Merah Remaja (PMR), Mengikuti lomba menulis cerpen </div>
                     </div>
 
                     <div class="exp-cute">
                         <div class="exp-header">
-                            <span class="exp-year">2021</span>
-                            <span class="exp-place">Ferio Printing</span>
+                            <span class="exp-year">2023 - 2024</span>
+                            
                         </div>
-                        <div class="exp-role">Layout, Graphic, Setting pre prints</div>
-                        <div class="exp-desc">September - Desember · Desain grafis dan persiapan cetak</div>
+                        
+                        <div class="exp-desc">Anggota Organisasi Information and Communication Technology (ICT), Berpartisipasi dalam lomba menyanyi </div>
                     </div>
 
-                    <div class="exp-cute">
-                        <div class="exp-header">
-                            <span class="exp-year">2023</span>
-                            <span class="exp-place">PT. Sumber Trijaya Lestari</span>
-                        </div>
-                        <div class="exp-role">Graphic Design Specialist</div>
-                        <div class="exp-desc">Januari - Juni · Apps Banner, Online Flyer, Social Media</div>
-                    </div>
-
-                    <div class="exp-cute">
-                        <div class="exp-header">
-                            <span class="exp-year">2024</span>
-                            <span class="exp-place">PT. Alfa Bumindo Cemerlang</span>
-                        </div>
-                        <div class="exp-role">Graphic Design</div>
-                        <div class="exp-desc">Desember - April · Social media, offline media, online media, marketing ads, motion, video</div>
-                    </div>
+        
 
                     <!-- Footer -->
                     <div class="footer-cute">
-                        <span>✧ imut & playful design ✧</span>
+                        <span>✧ ✧</span>
                     </div>
                 </div>
             </div>
