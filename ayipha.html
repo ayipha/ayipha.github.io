@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Alifah Lauthfiyah · Aurora Dreams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alifah Lauthfiyah Nurwasilah · CV Diri</title>
     <style>
+        :root{
+            --bg: #fffaf0; /* ivory */
+            --card: #fffdf8; /* soft cream */
+            --cream: #fff6e6; /* warm cream */
+            --accent: #efe1cd; /* beige accent */
+            --accent-2: #f5efe6; /* lighter accent */
+            --text: #5b4636; /* dark warm text */
+            --muted: #7a6050; /* muted text */
+            --shadow: rgba(90,60,40,0.06);
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,579 +24,329 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
-            background: #0b1a2b;
+            background: var(--bg);
+            font-family: 'Quicksand', 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 1rem;
-            position: relative;
-            overflow-x: hidden;
+            padding: 2rem 1.5rem;
+            color: var(--text);
         }
 
-        /* ===== AURORA BACKGROUND ===== */
-        .aurora-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Container utama */
+        .cute-cv {
+            max-width: 1100px;
             width: 100%;
-            height: 100%;
+            background: var(--card);
+            border-radius: 60px 60px 60px 60px / 40px 40px 40px 40px;
+            box-shadow: 0 25px 40px -10px var(--shadow), 0 0 0 8px var(--white);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background pattern subtle */
+        .cute-cv::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-2);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            opacity: 0.6;
             z-index: 0;
-            background: linear-gradient(145deg, #b5d9f5, #f0e4d5);
-            overflow: hidden;
         }
 
-        .aurora {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 30% 50%, rgba(180, 220, 255, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(240, 225, 210, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 10% 80%, rgba(200, 230, 255, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 90% 20%, rgba(255, 235, 220, 0.3) 0%, transparent 50%);
-            filter: blur(40px);
-            animation: auroraMove 20s ease-in-out infinite alternate;
-        }
-
-        .aurora2 {
-            background: 
-                radial-gradient(circle at 80% 30%, rgba(150, 200, 250, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 20% 70%, rgba(250, 220, 200, 0.3) 0%, transparent 50%);
-            filter: blur(60px);
-            animation: auroraMove2 25s ease-in-out infinite alternate;
-        }
-
-        @keyframes auroraMove {
-            0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
-            100% { transform: scale(1.2) rotate(5deg); opacity: 1; }
-        }
-
-        @keyframes auroraMove2 {
-            0% { transform: scale(1.2) rotate(-5deg); opacity: 0.5; }
-            100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-        }
-
-        /* ===== MAIN CARD ===== */
-        .dream-card {
-            max-width: 1200px;
-            width: 100%;
-            background: rgba(255, 250, 242, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: clamp(30px, 5vw, 50px);
-            padding: clamp(1.5rem, 4vw, 3rem);
-            box-shadow: 
-                0 50px 100px -30px rgba(0, 50, 80, 0.3),
-                0 0 0 2px rgba(255, 255, 255, 0.5) inset,
-                0 0 30px rgba(255, 255, 255, 0.3);
-            position: relative;
-            z-index: 10;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            animation: cardAppear 1s ease-out;
-        }
-
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== LAYOUT RESPONSIF ===== */
-        .dream-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: clamp(1.5rem, 3vw, 3rem);
-        }
-
-        /* ===== LEFT PANEL ===== */
-        .dream-left {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: clamp(30px, 4vw, 40px);
-            padding: clamp(1.5rem, 3vw, 2.5rem);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.2);
-            transition: 0.3s;
-            height: fit-content;
-        }
-
-        .dream-left:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        /* FOTO - RESPONSIF */
-        .photo-dream {
-            width: min(240px, 80%);
-            max-width: 240px;
-            aspect-ratio: 1/1;
-            margin: 0 auto clamp(1rem, 3vw, 2rem);
-            border-radius: 40% 60% 30% 70% / 40% 50% 50% 60%;
-            background: linear-gradient(145deg, #c2e0ff, #ffe6d5);
-            padding: 8px;
-            box-shadow: 0 30px 40px -20px #4a7b9c;
-            animation: softFloat 8s ease-in-out infinite;
-            position: relative;
-        }
-
-        .photo-dream::after {
+        .cute-cv::after {
             content: "";
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border-radius: inherit;
-            background: linear-gradient(145deg, rgba(255,255,255,0.3), transparent);
-            z-index: -1;
+            bottom: -30px;
+            left: -20px;
+            width: 250px;
+            height: 250px;
+            background: var(--accent);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            opacity: 0.45;
+            z-index: 0;
         }
 
-        @keyframes softFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
+        /* Stiker di background (subtle) */
+        .sticker-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .sticker { position: absolute; font-size: 2.5rem; opacity: 0.12; transform: rotate(10deg); }
+        .sticker1 { top: 5%; right: 5%; transform: rotate(15deg); }
+        .sticker2 { bottom: 10%; left: 3%; transform: rotate(-10deg); }
+        .sticker3 { top: 30%; left: 10%; transform: rotate(25deg); }
+        .sticker4 { bottom: 20%; right: 8%; transform: rotate(-5deg); }
 
-        .photo-dream img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: inherit;
-        }
+        /* Konten utama di atas sticker */
+        .cv-content { position: relative; z-index: 20; }
 
-        /* NAMA - RESPONSIF */
-        .name-dream {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            font-weight: 700;
-            color: #1f4d6b;
-            text-align: center;
-            line-height: 1.1;
-            margin-bottom: 0.5rem;
-            font-family: 'Playfair Display', serif;
-            word-break: break-word;
-        }
-
-        .sub-dream {
-            text-align: center;
-            color: #5e7f98;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            margin-bottom: clamp(1rem, 3vw, 2rem);
-            padding-bottom: clamp(0.5rem, 2vw, 1rem);
-            border-bottom: 2px dashed rgba(255,255,255,0.8);
-        }
-
-        /* KONTAK ITEM */
-        .contact-dream {
-            margin-top: clamp(1rem, 3vw, 2rem);
-        }
-
-        .contact-dream-item {
-            display: flex;
-            align-items: center;
-            gap: clamp(0.8rem, 2vw, 1.2rem);
-            margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
-            padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(1rem, 2vw, 1.2rem);
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            border: 2px solid white;
-            transition: 0.3s;
-            color: #2a4f6e;
-            font-size: clamp(0.85rem, 2vw, 1rem);
-            word-break: break-word;
-        }
-
-        .contact-dream-item:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateX(8px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .contact-icon {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            min-width: 40px;
-            text-align: center;
-        }
-
-        /* ===== RIGHT PANEL ===== */
-        .dream-right {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: clamp(30px, 4vw, 40px);
-            padding: clamp(1.5rem, 3vw, 2.5rem);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.2);
-        }
-
-        /* SECTION TITLE */
-        .section-dream {
-            font-size: clamp(1.3rem, 4vw, 1.6rem);
-            font-weight: 600;
-            color: #1f4d6b;
-            margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(0.8rem, 2vw, 1.2rem) 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-family: 'Playfair Display', serif;
-            flex-wrap: wrap;
-        }
-
-        .section-dream span {
-            flex: 1;
-            height: 2px;
-            background: linear-gradient(90deg, #ffffff, transparent);
-        }
-
-        .section-dream:first-of-type {
-            margin-top: 0;
-        }
-
-        /* ABOUT TEXT */
-        .about-dream {
-            background: rgba(255, 255, 255, 0.3);
-            padding: clamp(1.2rem, 3vw, 1.8rem);
-            border-radius: 30px;
-            border: 2px solid white;
-            line-height: 1.6;
-            color: #2f4b61;
-            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1);
-        }
-
-        /* SKILL CONTAINER */
-        .skill-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .skill-dream {
-            background: rgba(255, 255, 255, 0.5);
-            padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2.5vw, 1.8rem);
-            border-radius: 60px;
-            font-weight: 600;
-            color: #1f4d6b;
-            border: 2px solid white;
-            backdrop-filter: blur(5px);
-            transition: 0.2s;
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
-            letter-spacing: 0.3px;
-            box-shadow: 0 5px 10px -5px rgba(0,0,0,0.1);
-            white-space: nowrap;
-        }
-
-        @media (max-width: 480px) {
-            .skill-dream {
-                white-space: normal;
-                text-align: center;
-                flex: 1 1 auto;
-            }
-        }
-
-        .skill-dream:hover {
-            background: white;
-            transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 10px 20px -5px #9ac0d9;
-        }
-
-        /* EXPERIENCE CARDS */
-        .exp-dream {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            padding: clamp(1.2rem, 2.5vw, 1.8rem);
-            margin-bottom: 1rem;
-            border: 2px solid white;
-            backdrop-filter: blur(5px);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .exp-dream::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 8px;
-            height: 100%;
-            background: linear-gradient(to bottom, #9ac9f0, #f5d6c5);
-            border-radius: 8px 0 0 8px;
-        }
-
-        .exp-dream:hover {
-            background: rgba(255, 255, 255, 0.6);
-            transform: scale(1.02) translateX(5px);
-            box-shadow: 0 15px 30px -10px #7faac9;
-        }
-
-        .exp-dream h3 {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: #1d4c6e;
-            margin-bottom: 0.3rem;
-            font-weight: 700;
-            padding-left: 0.5rem;
-        }
-
-        .exp-dream .period {
-            color: #60829b;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            padding-left: 0.5rem;
-        }
-
-        .exp-dream p {
-            padding-left: 0.5rem;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-        }
-
-        /* HOBI */
-        .hobi-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-
-        .hobi-dream {
+        /* Header dengan nama */
+        .header-cute {
+            background: var(--cream);
+            border-radius: 100px / 50px;
+            padding: 1.5rem 2.5rem;
+            margin-bottom: 2rem;
             display: inline-block;
-            background: rgba(255, 245, 235, 0.6);
-            padding: clamp(0.5rem, 1.5vw, 0.6rem) clamp(1rem, 2.5vw, 1.5rem);
-            margin: 0.2rem;
-            border-radius: 60px;
-            border: 2px solid white;
-            color: #5f5547;
+            box-shadow: 0 10px 0 var(--shadow);
+            border: 3px solid var(--white);
+        }
+
+        .name-cute {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .title-cute {
+            font-size: 1.3rem;
+            color: var(--muted);
             font-weight: 500;
-            transition: 0.2s;
-            backdrop-filter: blur(5px);
-            font-size: clamp(0.85rem, 2vw, 0.95rem);
-            white-space: nowrap;
+            margin-top: 0.3rem;
         }
 
-        @media (max-width: 480px) {
-            .hobi-dream {
-                white-space: normal;
-                text-align: center;
-                flex: 1 1 auto;
-            }
+        /* Grid layout */
+        .cute-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+
+        /* Left panel */
+        .left-cute {
+            background: var(--ivory);
+            border-radius: 50px / 40px;
+            padding: 2rem 1.8rem;
+            border: 4px solid var(--white);
+            box-shadow: 0 15px 0 var(--shadow);
+            position: relative;
         }
 
-        .hobi-dream:hover {
-            background: #f5e8da;
-            transform: translateY(-3px);
+        /* Foto profil */
+        .photo-cute {
+            width: 180px; height: 180px; margin: 0 auto 1.5rem;
+            border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+            background: var(--accent);
+            border: 8px solid var(--white);
+            box-shadow: 0 15px 0 var(--shadow);
+            overflow: hidden; transition: 0.3s;
         }
 
-        /* FOOTER */
-        .footer-dream {
-            margin-top: clamp(2rem, 5vw, 3rem);
-            text-align: center;
-            color: #5f7f99;
-            font-size: clamp(0.85rem, 2vw, 0.95rem);
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+        .photo-cute img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Info pribadi */
+        .info-item {
+            background: var(--white);
+            padding: 0.8rem 1.2rem; border-radius: 40px; margin-bottom: 0.8rem;
+            border: 3px solid var(--accent-2); box-shadow: 0 5px 0 var(--shadow);
+            display: flex; align-items: center; gap: 0.8rem; transition: 0.2s;
         }
 
-        .footer-dream span {
-            background: rgba(255, 255, 255, 0.3);
-            padding: clamp(0.3rem, 1.5vw, 0.4rem) clamp(1rem, 3vw, 1.8rem);
-            border-radius: 60px;
-            border: 2px solid white;
-            backdrop-filter: blur(5px);
-        }
+        .info-item:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--shadow); }
 
-        /* ===== RESPONSIVE BREAKPOINTS ===== */
-        @media (max-width: 900px) {
-            .dream-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .dream-left {
-                max-width: 500px;
-                margin: 0 auto;
-                width: 100%;
-            }
-            
-            .photo-dream {
-                width: min(200px, 60%);
-            }
-        }
+        .info-icon { font-size: 1.5rem; min-width: 30px; text-align: center; }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 0.5rem;
-            }
-            
-            .dream-card {
-                padding: 1.2rem;
-            }
-            
-            .contact-dream-item {
-                flex-wrap: wrap;
-            }
-            
-            .contact-icon {
-                min-width: 30px;
-            }
-            
-            .section-dream {
-                gap: 0.5rem;
-            }
-        }
+        .info-text { font-size: 0.95rem; color: var(--text); font-weight: 600; word-break: break-word; }
 
-        @media (max-width: 380px) {
-            .name-dream {
-                font-size: 1.6rem;
-            }
-            
-            .contact-dream-item {
-                padding: 0.5rem;
-            }
-            
-            .contact-icon {
-                font-size: 1.3rem;
-            }
-        }
+        /* Section title */
+        .section-cute { font-size: 1.6rem; font-weight: 700; color: var(--text); margin: 1.8rem 0 1rem 0; font-family: 'Fredoka', sans-serif; display:flex; align-items:center; gap:0.8rem; }
 
-        /* LANDSCAPE MODE */
-        @media (max-height: 600px) and (orientation: landscape) {
-            body {
-                padding: 0.5rem;
-            }
-            
-            .dream-grid {
-                gap: 1rem;
-            }
-            
-            .photo-dream {
-                width: 150px;
-            }
-            
-            .dream-left, .dream-right {
-                padding: 1rem;
-            }
-        }
+        .section-cute span { background: var(--accent-2); padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.9rem; color: var(--muted); border: 2px solid var(--white); }
 
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        /* About me box (neutral) */
+        .about-cute { background: var(--cream); padding: 1.5rem; border-radius: 40px; border: 3px solid var(--white); box-shadow: 0 8px 0 var(--shadow); color: var(--muted); }
+
+        /* Skill chips */
+        .skill-container { display:flex; flex-wrap:wrap; gap:0.6rem; margin:1rem 0; }
+        .skill-cute { background: var(--accent); padding: 0.5rem 1.3rem; border-radius: 60px; font-weight:600; color: var(--text); border: 3px solid var(--white); box-shadow: 0 4px 0 var(--shadow); font-size:0.9rem; transition:0.2s; }
+        .skill-cute:hover { transform: rotate(2deg) scale(1.05); background: var(--accent-2); }
+
+        /* Education card */
+        .edu-cute { background: var(--cream); border-radius:40px; padding:1.2rem 1.8rem; margin-bottom:1rem; border:3px solid var(--white); box-shadow:0 8px 0 var(--shadow); display:flex; flex-wrap:wrap; align-items:baseline; gap:0.8rem; }
+        .edu-year { background: var(--white); padding:0.2rem 1.2rem; border-radius:60px; font-weight:700; color:var(--text); border:2px solid var(--accent-2); }
+        .edu-desc { font-weight:600; color:var(--text); }
+        .edu-desc small { font-weight:400; color:var(--muted); margin-left:0.3rem; }
+
+        /* Experience card */
+        .exp-cute { background: var(--cream); border-radius:40px; padding:1.5rem; margin-bottom:1.2rem; border:3px solid var(--white); box-shadow:0 8px 0 var(--shadow); position:relative; }
+        .exp-cute::before { content: "✧"; position:absolute; top:-5px; right:15px; font-size:2rem; color:var(--accent); opacity:0.35; }
+        .exp-header { display:flex; flex-wrap:wrap; align-items:baseline; gap:0.8rem 1.2rem; margin-bottom:0.5rem; }
+        .exp-year { background: var(--white); padding:0.2rem 1.2rem; border-radius:60px; font-weight:700; color:var(--text); border:2px solid var(--accent-2); }
+        .exp-place { font-weight:700; color:var(--text); font-size:1.2rem; }
+        .exp-role { color:var(--muted); font-weight:600; margin-bottom:0.3rem; background: rgba(255,255,255,0.6); display:inline-block; padding:0.2rem 1rem; border-radius:60px; }
+        .exp-desc { color:var(--muted); font-size:0.95rem; margin-top:0.5rem; padding-left:0.5rem; border-left:5px solid var(--accent-2); }
+
+        /* Portfolio button */
+        .portfolio-cute { background: var(--accent); border-radius:60px; padding:1rem 2rem; text-align:center; margin:1.5rem 0; border:4px solid var(--white); box-shadow:0 8px 0 var(--shadow); transition:0.2s; }
+        .portfolio-cute a { color: var(--text); text-decoration:none; font-weight:700; font-size:1.3rem; display:block; }
+        .portfolio-cute:hover { transform: scale(1.02); background: var(--accent-2); }
+
+        /* Footer */
+        .footer-cute { text-align:center; margin-top:2rem; color:var(--muted); font-size:1rem; }
+        .footer-cute span { background: var(--white); padding:0.2rem 1.5rem; border-radius:60px; border:3px solid var(--accent-2); }
+
+        /* Responsive */
+        @media (max-width: 750px) { .cute-grid { grid-template-columns: 1fr; } .name-cute { font-size:2rem; } }
+
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
     </style>
 </head>
 <body>
-    <div class="aurora-bg">
-        <div class="aurora"></div>
-        <div class="aurora aurora2"></div>
-    </div>
+    <div class="cute-cv">
+        <!-- Stiker imut di background -->
+        <div class="sticker-bg">
+            <div class="sticker sticker1">🌸</div>
+            <div class="sticker sticker2">🧸</div>
+            <div class="sticker sticker3">🍰</div>
+            <div class="sticker sticker4">✨</div>
+        </div>
 
-    <div class="dream-card">
-        <div class="dream-grid">
-            <!-- LEFT PANEL -->
-            <div class="dream-left">
-                <div class="photo-dream">
-                    <!-- GANTI DENGAN FOTO ASLI -->
-                    <img src="https://via.placeholder.com/400x400/d4ecff/5685a5?text=ALIFAH" alt="Alifah Lauthfiyah">
-                </div>
-                
-                <div class="name-dream">Alifah Lauthfiyah Nurwasilah</div>
-                <div class="sub-dream">Ilmu Komputer · F1G124002</div>
-                
-                <div class="contact-dream">
-                    <div class="contact-dream-item">
-                        <span class="contact-icon">📧</span>
-                        <span>alifah.ln@cs.ui.ac.id</span>
-                    </div>
-                    <div class="contact-dream-item">
-                        <span class="contact-icon">📱</span>
-                        <span>+62 812 3456 7890</span>
-                    </div>
-                    <div class="contact-dream-item">
-                        <span class="contact-icon">📍</span>
-                        <span>Jakarta, Indonesia</span>
-                    </div>
-                    <div class="contact-dream-item">
-                        <span class="contact-icon">🎓</span>
-                        <span>F1G124002</span>
-                    </div>
-                </div>
-                
-                <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap;">
-                    <span style="font-size: clamp(1.5rem, 4vw, 2rem); filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));">✨</span>
-                    <span style="font-size: clamp(1.5rem, 4vw, 2rem); filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));">💫</span>
-                    <span style="font-size: clamp(1.5rem, 4vw, 2rem); filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));">⭐</span>
-                </div>
+        <div class="cv-content">
+            <!-- Header dengan nama -->
+            <div class="header-cute">
+                <div class="name-cute">Alifah Lauthfiyah Nurwasilah</div>
+                <div class="title-cute">ILMU KOMPUTER</div>
             </div>
-            
-            <!-- RIGHT PANEL -->
-            <div class="dream-right">
-                <!-- ABOUT -->
-                <div class="section-dream">
-                    <span>🌸</span> TENTANG SAYA <span></span>
+
+            <!-- Grid konten -->
+            <div class="cute-grid">
+                <!-- LEFT PANEL - Info Pribadi -->
+                <div class="left-cute">
+                    <!-- Foto profil -->
+                    <div class="photo-cute">
+                        <!-- Ganti dengan foto asli nanti -->
+                        <img src="https://via.placeholder.com/300x300/fddde6/a55363?text=F" alt="February">
+                    </div>
+
+                    <!-- Info pribadi -->
+                    <div class="info-item">
+                        <span class="info-icon">🎂</span>
+                        <span class="info-text">Sidrap, 17 Maret 2006</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span class="info-text">Jl. Jend Sudirman</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <span class="info-text">alifahlauthfiyah17@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <span class="info-text">082246835470</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📷</span>
+                        <span class="info-text">@yearn4aile</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌍</span>
+                        <span class="info-text">Indonesia, Islam</span>
+                    </div>
                 </div>
-                <div class="about-dream">
-                    <strong>Halo! Saya Alifah Lauthfiyah Nurwasilah</strong> — mahasiswi Ilmu Komputer yang terpesona oleh dunia <strong>kecerdasan buatan, desain interaksi, dan creative coding</strong>. Saya percaya bahwa teknologi dan seni dapat bersatu menciptakan sesuatu yang indah. Selalu haus akan pembelajaran dan tantangan baru.
-                </div>
-                
-                <!-- KEMAMPUAN -->
-                <div class="section-dream">
-                    <span>⚡</span> KEMAMPUAN <span></span>
-                </div>
-                <div class="skill-container">
-                    <span class="skill-dream">Python</span>
-                    <span class="skill-dream">JavaScript</span>
-                    <span class="skill-dream">React</span>
-                    <span class="skill-dream">Figma</span>
-                    <span class="skill-dream">UI/UX</span>
-                    <span class="skill-dream">TensorFlow</span>
-                    <span class="skill-dream">HTML/CSS</span>
-                    <span class="skill-dream">Creative Coding</span>
-                </div>
-                
-                <!-- PENGALAMAN -->
-                <div class="section-dream">
-                    <span>💼</span> PENGALAMAN <span></span>
-                </div>
-                
-                <div class="exp-dream">
-                    <h3>Asisten Riset AI</h3>
-                    <div class="period">2024 - sekarang</div>
-                    <p>Laboratorium Kecerdasan Artifisial · membantu riset NLP dan computer vision</p>
-                </div>
-                
-                <div class="exp-dream">
-                    <h3>Web Developer</h3>
-                    <div class="period">2023 - 2024</div>
-                    <p>Himpunan Mahasiswa Ilmu Komputer · mengembangkan website organisasi</p>
-                </div>
-                
-                <div class="exp-dream">
-                    <h3>UI/UX Designer (Freelance)</h3>
-                    <div class="period">2022 - sekarang</div>
-                    <p>Mengerjakan proyek desain aplikasi untuk berbagai startup</p>
-                </div>
-                
-                <!-- HOBI -->
-                <div class="section-dream">
-                    <span>🎨</span> HOBI <span></span>
-                </div>
-                <div class="hobi-container">
-                    <span class="hobi-dream">Digital Illustration</span>
-                    <span class="hobi-dream">Photography</span>
-                    <span class="hobi-dream">Game Dev</span>
-                    <span class="hobi-dream">Music Production</span>
-                    <span class="hobi-dream">Reading</span>
-                </div>
-                
-                <!-- FOOTER -->
-                <div class="footer-dream">
-                    <span>✨ blue pastel dreams ✨</span>
-                    <span>🌿 cream ivory soft 🌿</span>
+
+                <!-- RIGHT PANEL - Konten utama -->
+                <div class="right-cute">
+                    <!-- About Me -->
+                    <div class="section-cute">
+                        ✦ About Me <span>imut</span>
+                    </div>
+                    <div class="about-cute">
+                        I am a graphic designer based in Tangerang. I am a graduate of Nusantara Multimedia University majoring in DKV specializing in Visual Branding Design. I have studied design since junior high school (SMP) until now and I am interested in layout, digital imaging, branding, print media and digital media. I like exploring various design styles and studying the principles and meaning the philosophy of a design.
+                    </div>
+
+                    <!-- Software & Skills -->
+                    <div class="section-cute">
+                        ✦ Software & Skills <span>✨</span>
+                    </div>
+                    <div class="skill-container">
+                        <span class="skill-cute">Digital Imaging</span>
+                        <span class="skill-cute">Digital Coloring</span>
+                        <span class="skill-cute">Branding</span>
+                        <span class="skill-cute">Print Media</span>
+                        <span class="skill-cute">Ai</span>
+                        <span class="skill-cute">Logo Design</span>
+                        <span class="skill-cute">Motion</span>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="section-cute">
+                        ✦ Education <span>📚</span>
+                    </div>
+                    <div class="edu-cute">
+                        <span class="edu-year">2016 - 2019</span>
+                        <span class="edu-desc">Islamic Village Majoring School (SMK) <small>Multimedia</small></span>
+                    </div>
+                    <div class="edu-cute">
+                        <span class="edu-year">2019 - 2023</span>
+                        <span class="edu-desc">Multimedia Nusantara University <small>DKV · GPA 3.46/4.00</small></span>
+                    </div>
+
+                    <!-- Hobi (replacing Portfolio) -->
+                    <div class="section-cute">
+                        ✦ Hobi <span>🎯</span>
+                    </div>
+                    <div class="skill-container hobby-list">
+                        <span class="skill-cute">Fotografi</span>
+                        <span class="skill-cute">Memasak</span>
+                        <span class="skill-cute">Jalan-jalan</span>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="section-cute">
+                        ✦ Experience <span>💼</span>
+                    </div>
+
+                    <div class="exp-cute">
+                        <div class="exp-header">
+                            <span class="exp-year">2018</span>
+                            <span class="exp-place">Dompet Dhuaa</span>
+                        </div>
+                        <div class="exp-role">Graphic Design</div>
+                        <div class="exp-desc">Februari - April · Mendesain konten untuk media sosial dan materi kampanye</div>
+                    </div>
+
+                    <div class="exp-cute">
+                        <div class="exp-header">
+                            <span class="exp-year">2019</span>
+                            <span class="exp-place">Ferio Printing</span>
+                        </div>
+                        <div class="exp-role">Layout, Settings</div>
+                        <div class="exp-desc">Mei - Agustus · Mengerjakan layout dan setting pre-print untuk berbagai produk</div>
+                    </div>
+
+                    <div class="exp-cute">
+                        <div class="exp-header">
+                            <span class="exp-year">2021</span>
+                            <span class="exp-place">Ferio Printing</span>
+                        </div>
+                        <div class="exp-role">Layout, Graphic, Setting pre prints</div>
+                        <div class="exp-desc">September - Desember · Desain grafis dan persiapan cetak</div>
+                    </div>
+
+                    <div class="exp-cute">
+                        <div class="exp-header">
+                            <span class="exp-year">2023</span>
+                            <span class="exp-place">PT. Sumber Trijaya Lestari</span>
+                        </div>
+                        <div class="exp-role">Graphic Design Specialist</div>
+                        <div class="exp-desc">Januari - Juni · Apps Banner, Online Flyer, Social Media</div>
+                    </div>
+
+                    <div class="exp-cute">
+                        <div class="exp-header">
+                            <span class="exp-year">2024</span>
+                            <span class="exp-place">PT. Alfa Bumindo Cemerlang</span>
+                        </div>
+                        <div class="exp-role">Graphic Design</div>
+                        <div class="exp-desc">Desember - April · Social media, offline media, online media, marketing ads, motion, video</div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="footer-cute">
+                        <span>✧ imut & playful design ✧</span>
+                    </div>
                 </div>
             </div>
         </div>
