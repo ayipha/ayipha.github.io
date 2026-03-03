@@ -27,12 +27,12 @@
         body {
             background: var(--bg);
             font-family: 'Quicksand', 'Poppins', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
             padding: 2rem 1.5rem;
             color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         /* Container utama */
@@ -75,16 +75,41 @@
         }
 
         /* Stiker di background (subtle + float) */
-        @keyframes floaty { 0% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(6deg);} 100% { transform: translateY(0) rotate(0deg);} }
-        .sticker-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .sticker { position: absolute; font-size: 2.6rem; opacity: 0.14; transform: rotate(10deg); filter: drop-shadow(0 4px 0 rgba(0,0,0,0.03)); animation: floaty 6s ease-in-out infinite; }
+        @keyframes floaty { 
+            0% { transform: translateY(0) rotate(0deg); } 
+            50% { transform: translateY(-8px) rotate(6deg);} 
+            100% { transform: translateY(0) rotate(0deg);} 
+        }
+        
+        .sticker-bg { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none; 
+            z-index: 1; 
+        }
+        
+        .sticker { 
+            position: absolute; 
+            font-size: 2.6rem; 
+            opacity: 0.14; 
+            transform: rotate(10deg); 
+            filter: drop-shadow(0 4px 0 rgba(0,0,0,0.03)); 
+            animation: floaty 6s ease-in-out infinite; 
+        }
+        
         .sticker1 { top: 5%; right: 5%; transform: rotate(15deg); animation-delay: 0s; }
         .sticker2 { bottom: 10%; left: 3%; transform: rotate(-10deg); animation-delay: 1.2s; }
         .sticker3 { top: 30%; left: 10%; transform: rotate(25deg); animation-delay: 0.6s; }
         .sticker4 { bottom: 20%; right: 8%; transform: rotate(-5deg); animation-delay: 1s; }
 
         /* Konten utama di atas sticker */
-        .cv-content { position: relative; z-index: 20; }
+        .cv-content { 
+            position: relative; 
+            z-index: 20; 
+        }
 
         /* Header dengan nama */
         .header-cute {
@@ -112,70 +137,34 @@
             margin-top: 0.3rem;
         }
 
-        /* Grid layout */
-        .cute-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+        /* Grid layout - dengan height terbatas untuk scroll */
+        .cute-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 2fr; 
+            gap: 2rem; 
+            align-items: start;
+            min-height: 500px;
+        }
 
-        /* Left panel */
+        /* ===== LEFT PANEL - STICKY ===== */
         .left-cute {
             background: var(--ivory);
             border-radius: 50px / 40px;
             padding: 2rem 1.8rem;
             border: 4px solid var(--white);
             box-shadow: 0 15px 0 var(--shadow);
-            position: relative;
+            position: sticky;
+            top: 2rem;
+            align-self: start;
+            z-index: 5;
             overflow: visible;
         }
 
-        /* Foto profil */
-        .photo-cute {
-            width: 180px; height: 180px; margin: 0 auto 1.5rem;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 20%, var(--ivory) 0%, #e6f2ff 30%, var(--accent) 100%);
-            border: 8px solid var(--white);
-            box-shadow: 0 15px 0 var(--shadow);
-            overflow: hidden; transition: none;
-            position: relative;
-        }
-
-        .photo-cute img, .photo-cute svg { width: 100%; height: 100%; object-fit: cover; display:block; }
-
-        /* Inner ring and subtle glossy overlay inside profile box */
-        .photo-cute::before {
-            content: "";
-            position: absolute;
-            inset: 8px;
-            border-radius: 50%;
-            box-shadow: inset 0 0 0 6px rgba(255,255,255,0.75);
-            pointer-events: none;
-        }
-        .photo-cute::after {
-            content: "";
-            position: absolute;
-            left: 0; right: 0; top: 6%; height: 40%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        /* small decorative badge inside the profile box (bottom-right) */
-        .photo-cute .mini-badge {
-            position: absolute; right: 10px; bottom: 10px; width: 36px; height: 36px;
-            border-radius: 50%; background: linear-gradient(180deg, #ffffff, #e6f6ff);
-            display:flex; align-items:center; justify-content:center; box-shadow: 0 6px 0 rgba(0,0,0,0.06);
-            border: 2px solid #fff; pointer-events: none;
-        }
-        .photo-cute .mini-badge svg { width:18px; height:18px; fill: #9fcfff; opacity:0.95; }
-
-        /* Info pribadi */
-        .info-item {
-            background: var(--white);
-            padding: 0.8rem 1.2rem; border-radius: 40px; margin-bottom: 0.8rem;
-            border: 3px solid var(--accent-2); box-shadow: 0 5px 0 var(--shadow);
-            display: flex; align-items: center; gap: 0.8rem; transition: 0.2s;
-        }
-
         /* Ensure content sits above decorative overlay */
-        .left-cute > * { position: relative; z-index: 2; }
+        .left-cute > * { 
+            position: relative; 
+            z-index: 2; 
+        }
 
         /* Subtle patterned overlay for profile card background */
         .left-cute::before {
@@ -188,11 +177,11 @@
             z-index: 1;
         }
 
-        /* Soft polka dots using repeating radial gradients */
+        /* Soft polka dots */
         .left-cute::after {
             content: "";
             position: absolute;
-            inset: 12px 12px 12px 12px;
+            inset: 12px;
             border-radius: calc(50px / 40px - 12px);
             background-image: radial-gradient(rgba(43,58,74,0.03) 1.5px, transparent 1.6px), radial-gradient(rgba(43,58,74,0.02) 1px, transparent 1.1px);
             background-size: 18px 18px, 9px 9px;
@@ -201,55 +190,367 @@
             pointer-events: none;
         }
 
-        .info-item:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--shadow); }
+        /* Foto profil */
+        .photo-cute {
+            width: 180px; 
+            height: 180px; 
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 20%, var(--ivory) 0%, #e6f2ff 30%, var(--accent) 100%);
+            border: 8px solid var(--white);
+            box-shadow: 0 15px 0 var(--shadow);
+            overflow: hidden; 
+            transition: none;
+            position: relative;
+        }
 
-        .info-icon { font-size: 1.5rem; min-width: 30px; text-align: center; }
+        .photo-cute svg { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
 
-        .info-text { font-size: 0.95rem; color: var(--text); font-weight: 600; word-break: break-word; }
+        /* Inner ring and subtle glossy overlay inside profile box */
+        .photo-cute::before {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 6px rgba(255,255,255,0.75);
+            pointer-events: none;
+        }
+        
+        .photo-cute::after {
+            content: "";
+            position: absolute;
+            left: 0; 
+            right: 0; 
+            top: 6%; 
+            height: 40%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* small decorative badge inside the profile box (bottom-right) */
+        .photo-cute .mini-badge {
+            position: absolute; 
+            right: 10px; 
+            bottom: 10px; 
+            width: 36px; 
+            height: 36px;
+            border-radius: 50%; 
+            background: linear-gradient(180deg, #ffffff, #e6f6ff);
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 6px 0 rgba(0,0,0,0.06);
+            border: 2px solid #fff; 
+            pointer-events: none;
+        }
+        
+        .photo-cute .mini-badge svg { 
+            width:18px; 
+            height:18px; 
+            fill: #9fcfff; 
+            opacity:0.95; 
+        }
+
+        /* Info pribadi */
+        .info-item {
+            background: var(--white);
+            padding: 0.8rem 1.2rem; 
+            border-radius: 40px; 
+            margin-bottom: 0.8rem;
+            border: 3px solid var(--accent-2); 
+            box-shadow: 0 5px 0 var(--shadow);
+            display: flex; 
+            align-items: center; 
+            gap: 0.8rem; 
+            transition: 0.2s;
+        }
+
+        .info-item:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 0 var(--shadow); 
+        }
+
+        .info-icon { 
+            font-size: 1.5rem; 
+            min-width: 30px; 
+            text-align: center; 
+        }
+
+        .info-text { 
+            font-size: 0.95rem; 
+            color: var(--text); 
+            font-weight: 600; 
+            word-break: break-word; 
+        }
+
+        /* ===== RIGHT PANEL - SCROLLABLE ===== */
+        .right-cute {
+            background: transparent;
+            padding: 0;
+            height: 600px; /* Tinggi tetap */
+            overflow-y: auto; /* Hanya bagian ini yang bisa scroll */
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--accent-2);
+            padding-right: 0.5rem;
+        }
+
+        /* Custom scrollbar */
+        .right-cute::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .right-cute::-webkit-scrollbar-track {
+            background: var(--accent-2);
+            border-radius: 10px;
+        }
+
+        .right-cute::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+            border: 2px solid var(--accent-2);
+        }
 
         /* Section title */
-        .section-cute { font-size: 1.6rem; font-weight: 700; color: var(--text); margin: 1.8rem 0 1rem 0; font-family: 'Fredoka', sans-serif; display:flex; align-items:center; gap:0.8rem; }
+        .section-cute { 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            color: var(--text); 
+            margin: 1.8rem 0 1rem 0; 
+            font-family: 'Fredoka', sans-serif; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.8rem; 
+        }
 
-        .section-cute span { background: var(--accent-2); padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.9rem; color: var(--muted); border: 2px solid var(--white); position:relative; }
-        @keyframes twinkle { 0% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); opacity: 0.9; } }
-        .section-cute span { animation: twinkle 3.8s ease-in-out infinite; }
+        .section-cute span { 
+            background: var(--accent-2); 
+            padding: 0.2rem 1rem; 
+            border-radius: 60px; 
+            font-size: 0.9rem; 
+            color: var(--muted); 
+            border: 2px solid var(--white); 
+            position: relative; 
+        }
+        
+        @keyframes twinkle { 
+            0% { transform: scale(1); opacity: 0.9; } 
+            50% { transform: scale(1.06); opacity: 1; } 
+            100% { transform: scale(1); opacity: 0.9; } 
+        }
+        
+        .section-cute span { 
+            animation: twinkle 3.8s ease-in-out infinite; 
+        }
 
-        /* About me box (neutral) */
-        .about-cute { background: var(--cream); padding: 1.5rem; border-radius: 40px; border: 3px solid var(--white); box-shadow: 0 8px 0 var(--shadow); color: var(--muted); }
+        /* About me box */
+        .about-cute { 
+            background: var(--cream); 
+            padding: 1.5rem; 
+            border-radius: 40px; 
+            border: 3px solid var(--white); 
+            box-shadow: 0 8px 0 var(--shadow); 
+            color: var(--muted); 
+        }
 
         /* Skill chips */
-        .skill-container { display:flex; flex-wrap:wrap; gap:0.6rem; margin:1rem 0; }
-        .skill-cute { background: linear-gradient(90deg,#fffaf3,#fff6f8); padding: 0.45rem 1.1rem; border-radius: 999px; font-weight:700; color: var(--text); border: 2px solid #fff; box-shadow: 0 6px 0 rgba(0,0,0,0.04); font-size:0.95rem; transition: transform .18s ease, box-shadow .18s ease; }
-        .skill-cute:hover { transform: translateY(-6px) scale(1.05); box-shadow: 0 10px 0 rgba(0,0,0,0.06); }
+        .skill-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 0.6rem; 
+            margin: 1rem 0; 
+        }
+        
+        .skill-cute { 
+            background: linear-gradient(90deg,#fffaf3,#fff6f8); 
+            padding: 0.45rem 1.1rem; 
+            border-radius: 999px; 
+            font-weight: 700; 
+            color: var(--text); 
+            border: 2px solid #fff; 
+            box-shadow: 0 6px 0 rgba(0,0,0,0.04); 
+            font-size: 0.95rem; 
+            transition: transform .18s ease, box-shadow .18s ease; 
+        }
+        
+        .skill-cute:hover { 
+            transform: translateY(-6px) scale(1.05); 
+            box-shadow: 0 10px 0 rgba(0,0,0,0.06); 
+        }
 
-        @keyframes slideInUp { 0% { transform: translateY(10px); opacity:0; } 100% { transform: translateY(0); opacity:1; } }
+        @keyframes slideInUp { 
+            0% { transform: translateY(10px); opacity:0; } 
+            100% { transform: translateY(0); opacity:1; } 
+        }
+        
         /* Education card */
-        .edu-cute { background: var(--cream); border-radius:14px; padding:1rem 1.4rem; margin-bottom:1rem; border:2px solid var(--white); box-shadow:0 8px 0 var(--shadow); display:flex; flex-wrap:wrap; align-items:baseline; gap:0.8rem; animation: slideInUp .45s ease both; }
-        .edu-year { background: var(--white); padding:0.2rem 1.2rem; border-radius:60px; font-weight:700; color:var(--text); border:2px solid var(--accent-2); }
-        .edu-desc { font-weight:600; color:var(--text); }
-        .edu-desc small { font-weight:400; color:var(--muted); margin-left:0.3rem; }
+        .edu-cute { 
+            background: var(--cream); 
+            border-radius: 14px; 
+            padding: 1rem 1.4rem; 
+            margin-bottom: 1rem; 
+            border: 2px solid var(--white); 
+            box-shadow: 0 8px 0 var(--shadow); 
+            display: flex; 
+            flex-wrap: wrap; 
+            align-items: baseline; 
+            gap: 0.8rem; 
+            animation: slideInUp .45s ease both; 
+        }
+        
+        .edu-year { 
+            background: var(--white); 
+            padding: 0.2rem 1.2rem; 
+            border-radius: 60px; 
+            font-weight: 700; 
+            color: var(--text); 
+            border: 2px solid var(--accent-2); 
+        }
+        
+        .edu-desc { 
+            font-weight: 600; 
+            color: var(--text); 
+        }
+        
+        .edu-desc small { 
+            font-weight: 400; 
+            color: var(--muted); 
+            margin-left: 0.3rem; 
+        }
 
         /* Experience card */
-        .exp-cute { background: var(--cream); border-radius:18px; padding:1.2rem; margin-bottom:1rem; border:2px solid var(--white); box-shadow:0 8px 0 var(--shadow); position:relative; transition: transform .18s ease; }
-        .exp-cute:hover { transform: translateY(-6px); }
-        .exp-cute::before { content: "✧"; position:absolute; top:-8px; right:12px; font-size:1.6rem; color:var(--accent); opacity:0.7; }
-        .exp-header { display:flex; flex-wrap:wrap; align-items:baseline; gap:0.8rem 1.2rem; margin-bottom:0.5rem; }
-        .exp-year { background: var(--white); padding:0.2rem 1.2rem; border-radius:60px; font-weight:700; color:var(--text); border:2px solid var(--accent-2); }
-        .exp-place { font-weight:700; color:var(--text); font-size:1.2rem; }
-        .exp-role { color:var(--muted); font-weight:600; margin-bottom:0.3rem; background: rgba(255,255,255,0.6); display:inline-block; padding:0.2rem 1rem; border-radius:60px; }
-        .exp-desc { color:var(--muted); font-size:0.95rem; margin-top:0.5rem; padding-left:0.5rem; border-left:5px solid var(--accent-2); }
+        .exp-cute { 
+            background: var(--cream); 
+            border-radius: 18px; 
+            padding: 1.2rem; 
+            margin-bottom: 1rem; 
+            border: 2px solid var(--white); 
+            box-shadow: 0 8px 0 var(--shadow); 
+            position: relative; 
+            transition: transform .18s ease; 
+        }
+        
+        .exp-cute:hover { 
+            transform: translateY(-6px); 
+        }
+        
+        .exp-cute::before { 
+            content: "✧"; 
+            position: absolute; 
+            top: -8px; 
+            right: 12px; 
+            font-size: 1.6rem; 
+            color: var(--accent); 
+            opacity: 0.7; 
+        }
+        
+        .exp-header { 
+            display: flex; 
+            flex-wrap: wrap; 
+            align-items: baseline; 
+            gap: 0.8rem 1.2rem; 
+            margin-bottom: 0.5rem; 
+        }
+        
+        .exp-year { 
+            background: var(--white); 
+            padding: 0.2rem 1.2rem; 
+            border-radius: 60px; 
+            font-weight: 700; 
+            color: var(--text); 
+            border: 2px solid var(--accent-2); 
+        }
+        
+        .exp-place { 
+            font-weight: 700; 
+            color: var(--text); 
+            font-size: 1.2rem; 
+        }
+        
+        .exp-role { 
+            color: var(--muted); 
+            font-weight: 600; 
+            margin-bottom: 0.3rem; 
+            background: rgba(255,255,255,0.6); 
+            display: inline-block; 
+            padding: 0.2rem 1rem; 
+            border-radius: 60px; 
+        }
+        
+        .exp-desc { 
+            color: var(--muted); 
+            font-size: 0.95rem; 
+            margin-top: 0.5rem; 
+            padding-left: 0.5rem; 
+            border-left: 5px solid var(--accent-2); 
+        }
 
         /* Portfolio button */
-        .portfolio-cute { background: var(--accent); border-radius:60px; padding:1rem 2rem; text-align:center; margin:1.5rem 0; border:4px solid var(--white); box-shadow:0 8px 0 var(--shadow); transition:0.2s; }
-        .portfolio-cute a { color: var(--text); text-decoration:none; font-weight:700; font-size:1.3rem; display:block; }
-        .portfolio-cute:hover { transform: scale(1.02); background: var(--accent-2); }
+        .portfolio-cute { 
+            background: var(--accent); 
+            border-radius: 60px; 
+            padding: 1rem 2rem; 
+            text-align: center; 
+            margin: 1.5rem 0; 
+            border: 4px solid var(--white); 
+            box-shadow: 0 8px 0 var(--shadow); 
+            transition: 0.2s; 
+        }
+        
+        .portfolio-cute a { 
+            color: var(--text); 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 1.3rem; 
+            display: block; 
+        }
+        
+        .portfolio-cute:hover { 
+            transform: scale(1.02); 
+            background: var(--accent-2); 
+        }
 
         /* Footer */
-        .footer-cute { text-align:center; margin-top:2rem; color:var(--muted); font-size:1rem; }
-        .footer-cute span { background: var(--white); padding:0.2rem 1.5rem; border-radius:60px; border:3px solid var(--accent-2); }
+        .footer-cute { 
+            text-align: center; 
+            margin-top: 2rem; 
+            color: var(--muted); 
+            font-size: 1rem; 
+        }
+        
+        .footer-cute span { 
+            background: var(--white); 
+            padding: 0.2rem 1.5rem; 
+            border-radius: 60px; 
+            border: 3px solid var(--accent-2); 
+        }
 
         /* Responsive */
-        @media (max-width: 750px) { .cute-grid { grid-template-columns: 1fr; } .name-cute { font-size:2rem; } }
+        @media (max-width: 750px) { 
+            .cute-grid { 
+                grid-template-columns: 1fr; 
+            } 
+            
+            .name-cute { 
+                font-size: 2rem; 
+            } 
+            
+            .left-cute { 
+                position: relative; 
+                top: auto; 
+                margin-bottom: 1rem;
+            } 
+            
+            .right-cute {
+                height: auto;
+                max-height: 500px;
+            }
+        }
 
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
     </style>
@@ -273,30 +574,32 @@
 
             <!-- Grid konten -->
             <div class="cute-grid">
-                <!-- LEFT PANEL - Info Pribadi -->
+                <!-- LEFT PANEL - STICKY (Profile) -->
                 <div class="left-cute">
                     <!-- Foto profil -->
                     <div class="photo-cute">
-                            <!-- Neutral inline avatar (no external file needed) -->
-                            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
-                                <defs>
-                                    <linearGradient id="g1" x1="0" x2="1">
-                                        <stop offset="0" stop-color="#e6f2ff"/>
-                                        <stop offset="1" stop-color="#cfe6ff"/>
-                                    </linearGradient>
-                                </defs>
-                                <rect width="120" height="120" rx="20" fill="url(#g1)" />
-                                <g transform="translate(12,12)" fill="#5b4636">
-                                    <circle cx="48" cy="30" r="20" fill="#fff" />
-                                    <circle cx="48" cy="30" r="18" fill="var(--ivory)" />
-                                    <path d="M8 86c0-16 20-28 40-28s40 12 40 28v6H8v-6z" fill="#fff" />
-                                    <path d="M20 86c0-10 14-18 28-18s28 8 28 18v2H20v-2z" fill="#e6f2ff" />
-                                </g>
-                                </svg>
-                                <div class="mini-badge" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l2.4 4.9L20 8l-4 3.6L17.6 20 12 16.8 6.4 20 8 11.6 4 8l5.6-1.1L12 2z"/></svg>
-                                </div>
-                            </div>
+                        <!-- Neutral inline avatar (no external file needed) -->
+                        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
+                            <defs>
+                                <linearGradient id="g1" x1="0" x2="1">
+                                    <stop offset="0" stop-color="#e6f2ff"/>
+                                    <stop offset="1" stop-color="#cfe6ff"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="120" height="120" rx="20" fill="url(#g1)" />
+                            <g transform="translate(12,12)" fill="#5b4636">
+                                <circle cx="48" cy="30" r="20" fill="#fff" />
+                                <circle cx="48" cy="30" r="18" fill="var(--ivory)" />
+                                <path d="M8 86c0-16 20-28 40-28s40 12 40 28v6H8v-6z" fill="#fff" />
+                                <path d="M20 86c0-10 14-18 28-18s28 8 28 18v2H20v-2z" fill="#e6f2ff" />
+                            </g>
+                        </svg>
+                        <div class="mini-badge" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M12 2l2.4 4.9L20 8l-4 3.6L17.6 20 12 16.8 6.4 20 8 11.6 4 8l5.6-1.1L12 2z"/>
+                            </svg>
+                        </div>
+                    </div>
 
                     <!-- Info pribadi -->
                     <div class="info-item">
@@ -325,11 +628,11 @@
                     </div>
                 </div>
 
-                <!-- RIGHT PANEL - Konten utama -->
+                <!-- RIGHT PANEL - SCROLLABLE (Hanya ini yang bisa scroll) -->
                 <div class="right-cute">
                     <!-- About Me -->
                     <div class="section-cute">
-                        ✦ About Me </span>
+                        ✦ About Me
                     </div>
                     <div class="about-cute">
                         Saya adalah mahasiswi Ilmu Komputer di Universitas Halu Oleo yang tertarik dengan dunia teknologi. Saya memilih jurusan ini karena melihat prospek masa depannya yang sangat cerah di era digital seperti sekarang, hampir semua bidang membutuhkan lulusan Ilkom, mulai dari perusahaan hingga instansi pemerintah. Fleksibilitas karir ini membuat saya yakin bahwa ilmu yang saya pelajari akan relevan dan berguna untuk jangka panjang.
@@ -337,41 +640,39 @@
 
                     <!-- Software & Skills -->
                     <div class="section-cute">
-                        ✦ Software & Skills </span>
+                        ✦ Software & Skills
                     </div>
                     <div class="skill-container">
                         <span class="skill-cute">Visual Studio Code</span>
                         <span class="skill-cute">Python</span>
                         <span class="skill-cute">MySQL</span>
                         <span class="skill-cute">Canva</span>
-            
                     </div>
 
                     <!-- Education -->
                     <div class="section-cute">
-                        ✦ Education </span>
+                        ✦ Education
                     </div>
                     <div class="edu-cute">
                         <span class="edu-year">2012 - 2018</span>
-                        <span class="edu-desc">Sekolah Dasar Negeri 1 Lawawoi </small></span>
+                        <span class="edu-desc">Sekolah Dasar Negeri 1 Lawawoi</span>
                     </div>
                     <div class="edu-cute">
                         <span class="edu-year">2018 - 2021</span>
-                        <span class="edu-desc">SMP Negeri 1 PANGSID </small></span>
+                        <span class="edu-desc">SMP Negeri 1 PANGSID</span>
                     </div>
                     <div class="edu-cute">
                         <span class="edu-year">2021 - 2024</span>
-                        <span class="edu-desc">UPT SMAN 2 SIDRAP </small></span>
+                        <span class="edu-desc">UPT SMAN 2 SIDRAP</span>
                     </div>
                     <div class="edu-cute">
                         <span class="edu-year">2024 - Sekarang</span>
-                        <span class="edu-desc">Universitas Halu Oleo </small></span>
+                        <span class="edu-desc">Universitas Halu Oleo</span>
                     </div>
-
 
                     <!-- Hobi -->
                     <div class="section-cute">
-                        ✦ Hobi </span>
+                        ✦ Hobi
                     </div>
                     <div class="skill-container hobby-list">
                         <span class="skill-cute">Bermain Game</span>
@@ -382,37 +683,29 @@
 
                     <!-- Experience -->
                     <div class="section-cute">
-                        ✦ Experience </span>
+                        ✦ Experience
                     </div>
 
                     <div class="exp-cute">
                         <div class="exp-header">
                             <span class="exp-year">2015 - 2018</span>
-                            
                         </div>
-                    
                         <div class="exp-desc">Marching Band, Anggota Panduan Suara</div>
                     </div>
 
                     <div class="exp-cute">
                         <div class="exp-header">
                             <span class="exp-year">2020 - 2021</span>
-                            
                         </div>
-                        
-                        <div class="exp-desc">Anggota Palang Merah Remaja (PMR), Mengikuti lomba menulis cerpen </div>
+                        <div class="exp-desc">Anggota Palang Merah Remaja (PMR), Mengikuti lomba menulis cerpen</div>
                     </div>
 
                     <div class="exp-cute">
                         <div class="exp-header">
                             <span class="exp-year">2023 - 2024</span>
-                            
                         </div>
-                        
-                        <div class="exp-desc">Anggota Organisasi Information and Communication Technology (ICT), Berpartisipasi dalam lomba menyanyi </div>
+                        <div class="exp-desc">Anggota Organisasi Information and Communication Technology (ICT), Berpartisipasi dalam lomba menyanyi</div>
                     </div>
-
-        
 
                     <!-- Footer -->
                     <div class="footer-cute">
