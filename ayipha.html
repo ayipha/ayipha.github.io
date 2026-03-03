@@ -6,15 +6,16 @@
     <title>Alifah Lauthfiyah Nurwasilah · CV Diri</title>
     <style>
         :root{
-            --bg: #fffaf0; /* ivory */
-            --card: #fffdf8; /* soft cream */
-            --cream: #fff6e6; /* warm cream */
-            --accent: #efe1cd; /* beige accent */
-            --accent-2: #f5efe6; /* lighter accent */
-            --text: #5b4636; /* dark warm text */
-            --muted: #7a6050; /* muted text */
-            --shadow: rgba(90,60,40,0.06);
+            --bg: #f7fbff; /* very light ivory-blue */
+            --card: #ffffff; /* card white */
+            --cream: #f3f9ff; /* pale blue/ivory */
+            --accent: #cfe6ff; /* pastel blue accent */
+            --accent-2: #e6f2ff; /* lighter pastel blue */
+            --text: #2b3a4a; /* dark slate blue text */
+            --muted: #55738a; /* muted blue-gray */
+            --shadow: rgba(43,58,74,0.06);
             --white: #ffffff;
+            --ivory: #f9f9f9;
         }
 
         * {
@@ -122,19 +123,48 @@
             border: 4px solid var(--white);
             box-shadow: 0 15px 0 var(--shadow);
             position: relative;
+            overflow: visible;
         }
 
         /* Foto profil */
         .photo-cute {
             width: 180px; height: 180px; margin: 0 auto 1.5rem;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 20%, #fff4f6 0%, #ffd6e0 30%, var(--accent) 100%);
+            background: radial-gradient(circle at 30% 20%, var(--ivory) 0%, #e6f2ff 30%, var(--accent) 100%);
             border: 8px solid var(--white);
             box-shadow: 0 15px 0 var(--shadow);
             overflow: hidden; transition: none;
+            position: relative;
         }
 
         .photo-cute img, .photo-cute svg { width: 100%; height: 100%; object-fit: cover; display:block; }
+
+        /* Inner ring and subtle glossy overlay inside profile box */
+        .photo-cute::before {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 6px rgba(255,255,255,0.75);
+            pointer-events: none;
+        }
+        .photo-cute::after {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; top: 6%; height: 40%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* small decorative badge inside the profile box (bottom-right) */
+        .photo-cute .mini-badge {
+            position: absolute; right: 10px; bottom: 10px; width: 36px; height: 36px;
+            border-radius: 50%; background: linear-gradient(180deg, #ffffff, #e6f6ff);
+            display:flex; align-items:center; justify-content:center; box-shadow: 0 6px 0 rgba(0,0,0,0.06);
+            border: 2px solid #fff; pointer-events: none;
+        }
+        .photo-cute .mini-badge svg { width:18px; height:18px; fill: #9fcfff; opacity:0.95; }
 
         /* Info pribadi */
         .info-item {
@@ -142,6 +172,33 @@
             padding: 0.8rem 1.2rem; border-radius: 40px; margin-bottom: 0.8rem;
             border: 3px solid var(--accent-2); box-shadow: 0 5px 0 var(--shadow);
             display: flex; align-items: center; gap: 0.8rem; transition: 0.2s;
+        }
+
+        /* Ensure content sits above decorative overlay */
+        .left-cute > * { position: relative; z-index: 2; }
+
+        /* Subtle patterned overlay for profile card background */
+        .left-cute::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(180deg, rgba(230,242,255,0.9), rgba(255,255,255,0.92));
+            background-blend-mode: normal;
+            z-index: 1;
+        }
+
+        /* Soft polka dots using repeating radial gradients */
+        .left-cute::after {
+            content: "";
+            position: absolute;
+            inset: 12px 12px 12px 12px;
+            border-radius: calc(50px / 40px - 12px);
+            background-image: radial-gradient(rgba(43,58,74,0.03) 1.5px, transparent 1.6px), radial-gradient(rgba(43,58,74,0.02) 1px, transparent 1.1px);
+            background-size: 18px 18px, 9px 9px;
+            opacity: 0.9;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .info-item:hover { transform: translateY(-3px); box-shadow: 0 8px 0 var(--shadow); }
@@ -224,19 +281,22 @@
                             <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar">
                                 <defs>
                                     <linearGradient id="g1" x1="0" x2="1">
-                                        <stop offset="0" stop-color="#f5efe6"/>
-                                        <stop offset="1" stop-color="#efe1cd"/>
+                                        <stop offset="0" stop-color="#e6f2ff"/>
+                                        <stop offset="1" stop-color="#cfe6ff"/>
                                     </linearGradient>
                                 </defs>
                                 <rect width="120" height="120" rx="20" fill="url(#g1)" />
                                 <g transform="translate(12,12)" fill="#5b4636">
                                     <circle cx="48" cy="30" r="20" fill="#fff" />
-                                    <circle cx="48" cy="30" r="18" fill="#fddde6" />
+                                    <circle cx="48" cy="30" r="18" fill="var(--ivory)" />
                                     <path d="M8 86c0-16 20-28 40-28s40 12 40 28v6H8v-6z" fill="#fff" />
-                                    <path d="M20 86c0-10 14-18 28-18s28 8 28 18v2H20v-2z" fill="#f5efe6" />
+                                    <path d="M20 86c0-10 14-18 28-18s28 8 28 18v2H20v-2z" fill="#e6f2ff" />
                                 </g>
-                            </svg>
-                    </div>
+                                </svg>
+                                <div class="mini-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l2.4 4.9L20 8l-4 3.6L17.6 20 12 16.8 6.4 20 8 11.6 4 8l5.6-1.1L12 2z"/></svg>
+                                </div>
+                            </div>
 
                     <!-- Info pribadi -->
                     <div class="info-item">
